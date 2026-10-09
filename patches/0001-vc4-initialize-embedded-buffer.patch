@@ -1,0 +1,16 @@
+From: Elias Naur <mail@eliasnaur.com>
+Subject: [PATCH] pipeline: rpi: always initialize embedded buffer in tryRunPipeline
+Origin: https://patchwork.libcamera.org/patch/19446/
+Upstream-Commit: 0dc737d3e31112973c9286eb7775b8f730352a75
+Note: Accepted upstream patch reproduced for libcamera v0.2.0 case study.
+
+--- a/src/libcamera/pipeline/rpi/vc4/vc4.cpp
++++ b/src/libcamera/pipeline/rpi/vc4/vc4.cpp
+@@ -945,6 +945,7 @@ void Vc4CameraData::tryRunPipeline()
+ 	params.requestControls = request->controls();
+ 	params.ipaContext = request->sequence();
+ 	params.delayContext = bayerFrame.delayContext;
++	params.buffers.embedded = 0;
+
+ 	if (embeddedBuffer) {
+ 		unsigned int embeddedId = unicam_[Unicam::Embedded].getBufferId(embeddedBuffer);

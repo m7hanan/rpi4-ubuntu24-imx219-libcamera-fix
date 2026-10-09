@@ -1,0 +1,17 @@
+# Never commit the Ubuntu libcamera source checkout or compiled artifacts
+libcamera-0.2.0/
+build/
+*.o
+*.so
+*.a
+*.bin
+*.jpg
+*.jpeg
+*.ppm
+*.core
+core
+core.*
+gst-registry*.bin
+# local notes / terminal captures may contain identifiers
+*.log
+.DS_Store
